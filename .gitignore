@@ -2,3 +2,6 @@
 test/**
 testProject/**
 **/*plugins/**
+*.log
+.metadata/version.ini
+
