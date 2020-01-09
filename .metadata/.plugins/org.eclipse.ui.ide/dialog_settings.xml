@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="/Users/jacob/Documents/School/Winter 2020/370/jbergerLab0"/>
+		<item value="/Users/jacob/Documents/School/Winter 2020/370/jbergerLab1"/>
+		<item value="/Users/jacob/Documents/School/Winter 2020/370"/>
+	</list>
+	<section name="ExternalProjectImportWizard">
+	</section>
+	<section name="NewWizardAction">
+	</section>
+</section>
