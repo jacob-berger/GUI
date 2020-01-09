@@ -5,3 +5,4 @@ testProject/**
 *.log
 .metadata/version.ini
 
+/.metadata/
