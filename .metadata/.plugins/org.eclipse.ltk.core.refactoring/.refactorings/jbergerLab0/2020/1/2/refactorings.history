@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename type &apos;jbergerlab0.JbergerLab0&apos; to &apos;jbergerLab0&apos;&#x0A;- Original project: &apos;jbergerLab0&apos;&#x0A;- Original element: &apos;jbergerlab0.JbergerLab0&apos;&#x0A;- Renamed element: &apos;jbergerlab0.jbergerLab0&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;JbergerLab0&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;jbergerlab0{JbergerLab0.java[JbergerLab0" matchStrategy="1" name="jbergerLab0" qualified="false" references="true" similarDeclarations="false" stamp="1578431289451" textual="false" version="1.0"/>
-</session>

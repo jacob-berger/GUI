@@ -4,5 +4,5 @@ testProject/**
 **/*plugins/**
 *.log
 .metadata/version.ini
+**/.metadata/**
 
-/.metadata/
