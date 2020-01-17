@@ -17,10 +17,6 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
  
-/**
- *
- * @author jacob
- */
 public class jbergerLab0 extends Application {
     
     Label mStatus;
