@@ -3,3 +3,11 @@
 */build/*
 *manifest.mf
 *nbproject*
+**/*metadata/**
+test/**
+testProject/**
+**/*plugins/**
+*.log
+.metadata/version.ini
+
+/.metadata/
