@@ -21,7 +21,7 @@ public class SevenSegment extends Region {
 	
 	public SevenSegment() {
 		Region region = new Region();
-		
+		getChildren().add(mCanvas);
 		mCurrentValue = 10;
 		for (boolean segment : segmentStates) {
 			segment = false;
