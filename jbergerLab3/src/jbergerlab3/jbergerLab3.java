@@ -24,8 +24,9 @@ public class jbergerLab3 extends Application {
     @Override
     public void start(Stage primaryStage) {
         BorderPane root = new BorderPane();
-        SevenSegment sevenSegment = new SevenSegment();
+        SevenSegment sevenSegment = new SevenSegment(5);
         root.setCenter(sevenSegment);
+        sevenSegment.draw();
 
         //Add the menus
         root.setTop(buildMenuBar());
