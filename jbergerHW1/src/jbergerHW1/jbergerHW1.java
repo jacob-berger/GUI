@@ -33,13 +33,13 @@ public class jbergerHW1 extends Application
     private double mLastX, mLastY;                    // last location of mouse
     private Color  mColor = Color.BLACK;              // initial color
     private UndoManager mUndoManager = new UndoManager();
+    private MenuBar menuBar;
     
     @Override
     public void start(Stage primaryStage) {
-
-        mCanvas = new Canvas(DIMX, DIMY);
-        initCanvas();
         
+    	mCanvas = new Canvas(DIMX, DIMY);
+    	
         // showing two different ways to attach mouse event listeners
         mCanvas.setOnMousePressed(mouseEvent -> onMousePressed(mouseEvent));
         mCanvas.addEventHandler(MouseEvent.MOUSE_DRAGGED,
@@ -54,6 +54,10 @@ public class jbergerHW1 extends Application
         // build a menu
         MenuBar menuBar = buildMenus();
         root.setTop(menuBar);
+        
+        
+        //moved canvas to here from top
+        initCanvas();
 
         // put a scene on the stage
         primaryStage.setTitle("HW1");
@@ -63,7 +67,7 @@ public class jbergerHW1 extends Application
     }
 
     private MenuBar buildMenus() {
-        MenuBar menuBar = new MenuBar();
+        menuBar = new MenuBar();
 
         // File menu with just new and exit for now
         Menu fileMenu = new Menu("_File");
@@ -94,6 +98,7 @@ public class jbergerHW1 extends Application
         MenuItem undoItem = new MenuItem("_Undo");
         undoItem.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN));
         undoItem.setDisable(true);
+        undoItem.setOnAction(actionEvent -> onUndo());
         
         MenuItem redoItem = new MenuItem("_Redo");
         redoItem.setAccelerator(new KeyCodeCombination(KeyCode.Y, KeyCombination.CONTROL_DOWN));
@@ -112,7 +117,11 @@ public class jbergerHW1 extends Application
         return menuBar;
     }
 
-    // TODO: modify this
+    private void onUndo() {
+    	mUndoManager.undo();
+    	refreshUndoRedo();
+    }
+
     private void onAbout() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("HW1");
@@ -152,11 +161,11 @@ public class jbergerHW1 extends Application
     }
 
     private void refreshUndoRedo() {
+    	//change back to mUndoManager.canUndo()
 		if (mUndoManager.canUndo()) {
 			System.out.println("Can undo");
-			MenuItem undoItem = buildMenus().getMenus().get(1).getItems().get(0);
-			undoItem.setText(mUndoManager.getPresentationName());
-			undoItem.setDisable(false);
+			menuBar.getMenus().get(1).getItems().get(0).setText(mUndoManager.getPresentationName());
+			menuBar.getMenus().get(1).getItems().get(0).setDisable(false);
 		} else {
 			buildMenus().getMenus().get(1).getItems().get(0).setDisable(true);
 			System.out.println("Can't undo");

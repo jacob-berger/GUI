@@ -28,7 +28,4 @@ public class UndoableNew extends AbstractUndoableEdit {
 	public String getPresentationName() {
 		return "New";
 	}
-	
-	
-
 }
