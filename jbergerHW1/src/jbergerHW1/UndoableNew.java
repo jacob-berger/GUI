@@ -19,7 +19,6 @@ public class UndoableNew extends AbstractUndoableEdit {
 
 	@Override
 	public void undo() throws CannotUndoException {
-		//Maybe?
 		GraphicsContext graphicsContext = mCanvas.getGraphicsContext2D();
 		graphicsContext.drawImage(mBackup, 0, 0);
 	}

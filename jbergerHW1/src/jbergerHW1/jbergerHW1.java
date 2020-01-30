@@ -57,7 +57,7 @@ public class jbergerHW1 extends Application
         
         
         //moved canvas to here from top
-        initCanvas();
+        initCanvas(false);
 
         // put a scene on the stage
         primaryStage.setTitle("HW1");
@@ -74,7 +74,7 @@ public class jbergerHW1 extends Application
         MenuItem item = new MenuItem("_New");
         item.setAccelerator(new KeyCodeCombination(KeyCode.N,
                 KeyCombination.CONTROL_DOWN));
-        item.setOnAction(actionEvent -> initCanvas());
+        item.setOnAction(actionEvent -> initCanvas(true));
         fileMenu.getItems().add(item);
         item = new MenuItem("_Quit");
         item.setAccelerator(new KeyCodeCombination(KeyCode.Q,
@@ -148,11 +148,13 @@ public class jbergerHW1 extends Application
     }
 
     // initialize the canvas
-    private void initCanvas() {
+    private void initCanvas(boolean allowInitialUndoRedo) {
         GraphicsContext g = mCanvas.getGraphicsContext2D();
-        UndoableNew undoableNew = new UndoableNew(mCanvas);
-        undoableNew.addEdit(mUndoManager);
-        refreshUndoRedo();
+        if (allowInitialUndoRedo) {
+        	UndoableNew undoableNew = new UndoableNew(mCanvas);
+        	mUndoManager.addEdit(undoableNew);
+        	refreshUndoRedo();
+        }
         // defaults to transparent, showing the pane color
         // fill it so we can distinguish the boundaries
         g.setFill(Color.WHITE);
@@ -164,20 +166,19 @@ public class jbergerHW1 extends Application
     	//change back to mUndoManager.canUndo()
 		if (mUndoManager.canUndo()) {
 			System.out.println("Can undo");
-			menuBar.getMenus().get(1).getItems().get(0).setText(mUndoManager.getPresentationName());
+			menuBar.getMenus().get(1).getItems().get(0).setText("Undo "+ mUndoManager.getPresentationName());
 			menuBar.getMenus().get(1).getItems().get(0).setDisable(false);
 		} else {
-			buildMenus().getMenus().get(1).getItems().get(0).setDisable(true);
+			menuBar.getMenus().get(1).getItems().get(0).setDisable(true);
 			System.out.println("Can't undo");
 		}
 		
 		if (mUndoManager.canRedo()) {
 			System.out.println("Can redo");
-			MenuItem redoItem = buildMenus().getMenus().get(1).getItems().get(1);
-			redoItem.setText(mUndoManager.getPresentationName());
-			redoItem.setDisable(false);
+			menuBar.getMenus().get(1).getItems().get(1).setText("Redo "+ mUndoManager.getPresentationName());
+			menuBar.getMenus().get(1).getItems().get(1).setDisable(false);
 		} else {
-			buildMenus().getMenus().get(1).getItems().get(1).setDisable(true);
+			menuBar.getMenus().get(1).getItems().get(1).setDisable(true);
 			System.out.println("Can't redo");
 		}
 		
@@ -185,6 +186,9 @@ public class jbergerHW1 extends Application
 
 	// when the mouse is pressed, save the coordinates
     private void onMousePressed(MouseEvent e) {
+    	UndoableScribble scribble = new UndoableScribble(mCanvas);
+    	mUndoManager.addEdit(scribble);
+    	refreshUndoRedo();
         mLastX = e.getX();
         mLastY = e.getY();
     }
