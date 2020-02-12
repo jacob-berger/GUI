@@ -14,7 +14,7 @@ public class Line implements Serializable {
 	private Point2D mStart, mEnd;
 	private int mWidth;
 	private Color mColor;
-	private ArrayList<Line> lines;
+	public ArrayList<Line> lines;
 	
 	public Line(Point2D start, Point2D end, int width, Color color) {
 		if (start == null) throw new NullPointerException("Starting point cannot be null.");
@@ -34,7 +34,9 @@ public class Line implements Serializable {
 	}
 	
 	public void AddLine(Line line) {
-		//TASK 2 PART 3
+		if (lines == null) {
+			lines = new ArrayList<Line>();
+		}
 		lines.add(line);
 	}
 
