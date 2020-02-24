@@ -1,5 +1,6 @@
 package jbergerlab7;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Optional;
@@ -25,7 +26,9 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
- 
+
+import javax.swing.text.html.Option;
+
 public class jbergerLab7 extends Application {
     
     Label mStatus;
@@ -112,27 +115,7 @@ public class jbergerLab7 extends Application {
 				if (buttonData.compareTo(ButtonData.OK_DONE) == 0) {
 					setStatus("OK_DONE");
 					
-					Text text = new Text();
-					
-					ApplicationSettings settings = ApplicationSettings.getInstance();
-					if (settings.mBoldSelected) {
-						if (settings.mItalicsSelected) {
-							text.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, settings.getFontSize()));
-						} else {
-							text.setFont(Font.font("Arial", FontWeight.BOLD, settings.getFontSize()));
-						}
-					} else if (settings.mItalicsSelected) {
-						text.setFont(Font.font("Arial", FontPosture.ITALIC, settings.getFontSize()));
-					} else {
-						text.setFont(Font.font("Arial", settings.getFontSize()));
-					}
-					if (settings.mDateTimeSelected) {
-						SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, MMM d, yyyy 'at' h:mm a");
-						Date date = new Date();
-						text.setText(dateFormat.format(date));
-					} else {
-						text.setText(settings.mUserString);
-					}
+					Text text = buildText();
 					
 					root.setCenter(text);
 				}
@@ -144,7 +127,35 @@ public class jbergerLab7 extends Application {
 		return null;
 	}
 
-	public void setStatus(String status) {
+    public Text buildText() throws IOException {
+        Text text = new Text();
+
+        ApplicationSettings settings = ApplicationSettings.getInstance();
+        OptionsLayoutController controller = new OptionsLayoutController();
+        controller.readPreferences();
+        if (settings.mBoldSelected) {
+            if (settings.mItalicsSelected) {
+                text.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, settings.getFontSize()));
+            } else {
+                text.setFont(Font.font("Arial", FontWeight.BOLD, settings.getFontSize()));
+            }
+        } else if (settings.mItalicsSelected) {
+            text.setFont(Font.font("Arial", FontPosture.ITALIC, settings.getFontSize()));
+        } else {
+            text.setFont(Font.font("Arial", settings.getFontSize()));
+        }
+        if (settings.mDateTimeSelected) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, MMM d, yyyy 'at' h:mm a");
+            Date date = new Date();
+            text.setText(dateFormat.format(date));
+        } else {
+            text.setText(settings.mUserString);
+        }
+
+        return text;
+    }
+
+    public void setStatus(String status) {
         mStatus.setText(status);
     }
 
