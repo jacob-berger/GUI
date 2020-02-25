@@ -25,6 +25,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import javax.swing.text.html.Option;
@@ -109,14 +110,15 @@ public class jbergerLab7 extends Application {
     private Object onOptionsSelected() {
 		try {
 			OptionsLayoutController controller = new OptionsLayoutController();
+			controller.initModality(Modality.NONE);
 			Optional<ButtonType> returnedButton = controller.showAndWait();
 			if (returnedButton.isPresent()) {
 				ButtonData buttonData = returnedButton.get().getButtonData();
 				if (buttonData.compareTo(ButtonData.OK_DONE) == 0) {
 					setStatus("OK_DONE");
-					
+
 					Text text = buildText();
-					
+
 					root.setCenter(text);
 				}
 			}
