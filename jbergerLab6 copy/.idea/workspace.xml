@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9a18d8ac-18b0-4a89-af0c-5573cb851385" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../jbergerLab0remake/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab0remake/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab0remake/.idea/description.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab0remake/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab0remake/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab0remake/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab0remake/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab0remake/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab0remake/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab0remake/jbergerLab0remake.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab0remake/out/production/jbergerLab0remake/sample/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab0remake/out/production/jbergerLab0remake/sample/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab0remake/out/production/jbergerLab0remake/sample/sample.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab0remake/src/sample/Controller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab0remake/src/sample/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab0remake/src/sample/sample.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab7/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../jbergerLab7/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab7/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../jbergerLab7/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab7/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../jbergerLab7/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab7/build/classes/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab7/build/classes/.idea/src.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab7/build/classes/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab7/build/classes/Images/blank.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab7/build/classes/Images/horiz.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab7/build/classes/Images/o.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab7/build/classes/Images/vert.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab7/build/classes/Images/x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab7/build/classes/jbergerlab7/jbergerLab7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab7/dist/jbergerLab0.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab7/dist/jbergerLab0.jnlp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab7/jbergerLab7.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab7/src/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab7/src/.idea/src.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab7/src/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab7/src/Images/blank.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab7/src/Images/horiz.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab7/src/Images/o.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab7/src/Images/vert.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab7/src/Images/x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab7/src/jbergerlab7/jbergerLab7.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1YGvnTPObb5Ore5d1NdOEmpKkx4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9a18d8ac-18b0-4a89-af0c-5573cb851385" name="Default Changelist" comment="" />
+      <created>1582581911965</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1582581911965</updated>
+    </task>
+    <servers />
+  </component>
+</project>

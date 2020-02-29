@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2eff15be-3687-43d2-af0d-52529109cbcb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../jbergerHW3/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jbergerHW3/.idea/dictionaries/jberger.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jbergerHW3/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jbergerHW3/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jbergerHW3/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jbergerHW3/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jbergerHW3/jbergerLab0.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jbergerHW3/src/jbergerHW3/Subpanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jbergerLab7/.idea/artifacts/jbergerLab7_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jbergerLab4.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Print.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jbergerLab7/build/classes/jbergerlab7/jbergerLab7.class" beforeDir="false" afterPath="$PROJECT_DIR$/../jbergerLab7/build/classes/jbergerlab7/jbergerLab7.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1YPAmbFangy6R5Wyw59aRKkRaTI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="inlay.hints.JAVA" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="jbergerLab9.jbergerLab9" />
+      <module name="jbergerLab4" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2eff15be-3687-43d2-af0d-52529109cbcb" name="Default Changelist" comment="" />
+      <created>1582834015050</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1582834015050</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="369" y="102" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582834164282">
+      <screen x="0" y="23" width="1440" height="834" />
+    </state>
+    <state x="369" y="102" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.834@0.23.1440.834" timestamp="1582834164282" />
+    <state x="835" y="156" key="#com.intellij.ide.util.MemberChooser" timestamp="1582836357028">
+      <screen x="0" y="23" width="1440" height="834" />
+    </state>
+    <state x="835" y="156" key="#com.intellij.ide.util.MemberChooser/0.23.1440.834@0.23.1440.834" timestamp="1582836357028" />
+    <state x="642" y="231" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1582834161706">
+      <screen x="0" y="23" width="1440" height="834" />
+    </state>
+    <state x="642" y="231" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1440.834@0.23.1440.834" timestamp="1582834161706" />
+    <state x="789" y="332" width="467" height="225" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1582834341105">
+      <screen x="0" y="23" width="1440" height="834" />
+    </state>
+    <state x="789" y="332" width="467" height="225" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.23.1440.834@0.23.1440.834" timestamp="1582834341105" />
+    <state width="793" height="268" key="GridCell.Tab.0.bottom" timestamp="1582837327015">
+      <screen x="0" y="23" width="1440" height="834" />
+    </state>
+    <state width="793" height="268" key="GridCell.Tab.0.bottom/0.23.1440.834@0.23.1440.834" timestamp="1582837327015" />
+    <state width="793" height="268" key="GridCell.Tab.0.center" timestamp="1582837327014">
+      <screen x="0" y="23" width="1440" height="834" />
+    </state>
+    <state width="793" height="268" key="GridCell.Tab.0.center/0.23.1440.834@0.23.1440.834" timestamp="1582837327014" />
+    <state width="793" height="268" key="GridCell.Tab.0.left" timestamp="1582837327014">
+      <screen x="0" y="23" width="1440" height="834" />
+    </state>
+    <state width="793" height="268" key="GridCell.Tab.0.left/0.23.1440.834@0.23.1440.834" timestamp="1582837327014" />
+    <state width="793" height="268" key="GridCell.Tab.0.right" timestamp="1582837327015">
+      <screen x="0" y="23" width="1440" height="834" />
+    </state>
+    <state width="793" height="268" key="GridCell.Tab.0.right/0.23.1440.834@0.23.1440.834" timestamp="1582837327015" />
+    <state width="793" height="268" key="GridCell.Tab.1.bottom" timestamp="1582837327017">
+      <screen x="0" y="23" width="1440" height="834" />
+    </state>
+    <state width="793" height="268" key="GridCell.Tab.1.bottom/0.23.1440.834@0.23.1440.834" timestamp="1582837327017" />
+    <state width="793" height="268" key="GridCell.Tab.1.center" timestamp="1582837327016">
+      <screen x="0" y="23" width="1440" height="834" />
+    </state>
+    <state width="793" height="268" key="GridCell.Tab.1.center/0.23.1440.834@0.23.1440.834" timestamp="1582837327016" />
+    <state width="793" height="268" key="GridCell.Tab.1.left" timestamp="1582837327016">
+      <screen x="0" y="23" width="1440" height="834" />
+    </state>
+    <state width="793" height="268" key="GridCell.Tab.1.left/0.23.1440.834@0.23.1440.834" timestamp="1582837327016" />
+    <state width="793" height="268" key="GridCell.Tab.1.right" timestamp="1582837327016">
+      <screen x="0" y="23" width="1440" height="834" />
+    </state>
+    <state width="793" height="268" key="GridCell.Tab.1.right/0.23.1440.834@0.23.1440.834" timestamp="1582837327016" />
+    <state x="443" y="79" key="SettingsEditor" timestamp="1582836726386">
+      <screen x="0" y="23" width="1440" height="834" />
+    </state>
+    <state x="443" y="79" key="SettingsEditor/0.23.1440.834@0.23.1440.834" timestamp="1582836726386" />
+    <state x="687" y="181" width="670" height="676" key="search.everywhere.popup" timestamp="1582835877129">
+      <screen x="0" y="23" width="1440" height="834" />
+    </state>
+    <state x="687" y="181" width="670" height="676" key="search.everywhere.popup/0.23.1440.834@0.23.1440.834" timestamp="1582835877129" />
+  </component>
+</project>
