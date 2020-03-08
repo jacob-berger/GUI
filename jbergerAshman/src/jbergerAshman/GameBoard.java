@@ -195,4 +195,5 @@ public class GameBoard extends Region {
 
         layoutInArea(tilePane, 0,0, x, y, 0, HPos.CENTER, VPos.TOP);
     }
+
 }
