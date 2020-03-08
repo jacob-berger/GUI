@@ -1,7 +1,10 @@
 package jbergerAshman;
 
+import com.sun.xml.internal.ws.policy.EffectiveAlternativeSelector;
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -10,11 +13,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 
 import java.util.Random;
@@ -28,6 +35,7 @@ public class jbergerAshman extends Application {
     int numGhosts;
     double ghostSpeed;
     int[] playerLocation;
+    Image player;
     Paint ash = Color.GREEN;
     Paint ghost = Color.RED;
     double width = 400;
@@ -35,9 +43,14 @@ public class jbergerAshman extends Application {
     boolean run;
     Image ghost1, ghost2, ghost3, ghost4;
     int[] ghost1location, ghost2location, ghost3location, ghost4location;
-
+    long previousTime = System.currentTimeMillis();
     GameBoard gameBoard;
     private boolean paused;
+    private AnimationTimer timer;
+
+    boolean goNorth, goEast, goSouth, goWest;
+
+    Line line;
 
     public static void main(String[] args) {
         launch(args);
@@ -45,19 +58,31 @@ public class jbergerAshman extends Application {
 
     public int[] getGhostLocation(int ghostNumber) {
         switch (ghostNumber) {
-            case 1: return ghost1location;
-            case 2: return ghost2location;
-            case 3: return ghost3location;
-            default: return ghost4location;
+            case 1:
+                return ghost1location;
+            case 2:
+                return ghost2location;
+            case 3:
+                return ghost3location;
+            default:
+                return ghost4location;
         }
     }
 
     public void setGhostlocation(int ghostNumber, int[] location) {
         switch (ghostNumber) {
-            case 1: ghost1location = location; break;
-            case 2: ghost2location = location; break;
-            case 3: ghost3location = location; break;
-            default: ghost4location = location; break;
+            case 1:
+                ghost1location = location;
+                break;
+            case 2:
+                ghost2location = location;
+                break;
+            case 3:
+                ghost3location = location;
+                break;
+            default:
+                ghost4location = location;
+                break;
         }
     }
 
@@ -117,20 +142,69 @@ public class jbergerAshman extends Application {
         setNumGhosts(2);
         setLevel(1);
         setPaused(false);
-        playerLocation = new int[] {0,0};
+        playerLocation = new int[]{0, 0};
+        player = new Image("Images/Player.png", 20, 20, false, false);
         Circle circle = new Circle(10, ash);
         circle.setFill(ash);
         gameBoard.tilePane.getChildren().set(0, circle);
         createGhosts();
 
+
         root.setCenter(gameBoard);
 
         //Add the menus
         root.setTop(buildMenuBar());
-        mStatus = new Label("Everything is Copacetic");
+        mStatus = new Label("Everything is copacetic");
         ToolBar toolBar = new ToolBar(mStatus);
         root.setBottom(toolBar);
         Scene scene = new Scene(root, width, height);
+
+        //Timer?
+        Button button = new Button("Start timer");
+        timer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                onTimer(now);
+                if (goNorth) setStatus("North");
+                if (goEast) setStatus("East");
+                if (goSouth) setStatus("South");
+                if (goWest) setStatus("West");
+
+                movePlayer();
+            }
+        };
+
+        button.setOnAction(actionEvent -> timer.start());
+        HBox bottomBox = new HBox();
+        line = new Line();
+        line.setStrokeWidth(20);
+        bottomBox.getChildren().addAll(button, toolBar, line);
+
+        root.setBottom(bottomBox);
+
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                switch (event.getCode()) {
+                    case UP: goNorth = true; break;
+                    case RIGHT: goEast = true; break;
+                    case DOWN: goSouth = true; break;
+                    case LEFT: goWest = true; break;
+                }
+            }
+        });
+
+        scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                switch (event.getCode()) {
+                    case UP:    goNorth = false; break;
+                    case DOWN:  goSouth = false; break;
+                    case LEFT:  goWest  = false; break;
+                    case RIGHT: goEast  = false; break;
+                }
+            }
+        });
 
 
         //Hopefully just for testing
@@ -140,6 +214,41 @@ public class jbergerAshman extends Application {
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    private void movePlayer() {
+        if (goNorth) {
+            playerLocation[0] -= 1;
+        }
+        if (goEast) {
+            playerLocation[1] += 1;
+        }
+        if (goSouth) {
+            playerLocation[0] += 1;
+        }
+        if (goWest) {
+            playerLocation[1] -= 1;
+        }
+
+        drawPlayer();
+    }
+
+    private void drawPlayer() {
+        setNodeAtLocation(playerLocation[0], playerLocation[1], player);
+    }
+
+    private void rotate() {
+        Rotate rotate = new Rotate();
+        rotate.setAngle(1.5);
+        line.getTransforms().add(rotate);
+    }
+
+    private void onTimer(long now) {
+        now = System.currentTimeMillis();
+        long elapsed = (now - previousTime);
+        previousTime = now;
+        setStatus("" + elapsed);
+        rotate();
     }
 
     private void createGhosts() {
@@ -152,7 +261,7 @@ public class jbergerAshman extends Application {
             ghost1 = new Image("Images/Stu.jpg", 20, 20, false, false);
             if (setNodeAtLocation(x, y, ghost1)) {
                 success = true;
-                setGhostlocation(1, new int[] {x, y});
+                setGhostlocation(1, new int[]{x, y});
             }
         }
         success = false;
@@ -164,7 +273,7 @@ public class jbergerAshman extends Application {
             if (x != getGhostLocation(1)[0] || y != getGhostLocation(1)[1]) {
                 if (setNodeAtLocation(x, y, ghost2)) {
                     success = true;
-                    setGhostlocation(2, new int[] {x, y});
+                    setGhostlocation(2, new int[]{x, y});
                 }
             }
         }
@@ -178,7 +287,7 @@ public class jbergerAshman extends Application {
                 if ((x != getGhostLocation(1)[0] || y != getGhostLocation(1)[1]) && (x != getGhostLocation(2)[0] || y != getGhostLocation(2)[1])) {
                     if (setNodeAtLocation(x, y, ghost3)) {
                         success = true;
-                        setGhostlocation(3, new int[] {x, y});
+                        setGhostlocation(3, new int[]{x, y});
                     }
                 }
             }
@@ -191,27 +300,27 @@ public class jbergerAshman extends Application {
                 if ((x != getGhostLocation(1)[0] || y != getGhostLocation(1)[1]) && (x != getGhostLocation(2)[0] || y != getGhostLocation(2)[1]) && (x != getGhostLocation(3)[0] || y != getGhostLocation(3)[1])) {
                     if (setNodeAtLocation(x, y, ghost4)) {
                         success = true;
-                        setGhostlocation(4, new int[] {x, y});
+                        setGhostlocation(4, new int[]{x, y});
                     }
                 }
             }
         }
     }
 
-    private void setPaused(boolean b) {
-        paused = b;
-    }
-
     public boolean getPaused() {
         return paused;
     }
 
-    private void setNumGhosts(int i) {
-        numGhosts = i;
+    private void setPaused(boolean b) {
+        paused = b;
     }
 
     private int getNumGhosts() {
         return numGhosts;
+    }
+
+    private void setNumGhosts(int i) {
+        numGhosts = i;
     }
 
     private void onAbout() {
@@ -283,5 +392,7 @@ public class jbergerAshman extends Application {
             return false;
         }
     }
+
+
 
 }
