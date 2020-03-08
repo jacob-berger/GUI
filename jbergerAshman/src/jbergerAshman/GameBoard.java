@@ -25,6 +25,7 @@ public class GameBoard extends Region {
     }
 
     private Tile[][] createBoard() {
+
         Tile[][] result = new Tile[20][20];
         //Row 1
         for (int ix = 0; ix < 10; ix++) {
@@ -169,7 +170,7 @@ public class GameBoard extends Region {
 //                    Rectangle rectangle = new Rectangle(getWidth() / 20, getWidth() / 20);
 //                    Rectangle rectangle = new Rectangle(20,20);
 //                    rectangle.setFill(empty);
-                    Image image = new Image("Images/Cake.png", 20, 20, false, false   );
+                    Image image = new Image("Images/Cake.png", 20, 20, false, false);
                     ImageView imageView = new ImageView(image);
 //                    tilePane.getChildren().add(rectangle);
                     tilePane.getChildren().add(imageView);
