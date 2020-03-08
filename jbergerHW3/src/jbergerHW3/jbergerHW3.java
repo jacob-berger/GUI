@@ -2,42 +2,51 @@ package jbergerHW3;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.scene.Node;
+import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ToolBar;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyCodeCombination;
-import javafx.scene.input.KeyCombination;
+import javafx.scene.input.*;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
- 
+
+import java.util.Observable;
+
 public class jbergerHW3 extends Application {
-    
+
+    private static DataFormat dataFormat;
     Label mStatus;
     VBox mMainDisplay;
     Subpanel mTop, mBottom;
+    BorderPane root;
+    public static Clipboard clipboard = Clipboard.getSystemClipboard();
+
+    public static DataFormat getDataFormat() {
+        return dataFormat;
+    }
+
+    public static void copySettings(String s) {
+        ClipboardContent content = new ClipboardContent();
+        content.put(dataFormat, s);
+        clipboard.setContent(content);
+    }
 
     @Override
     public void start(Stage primaryStage) {
 
-        BorderPane root = new BorderPane();
+        root = new BorderPane();
         createDisplay();
         root.setCenter(mMainDisplay);
-
-//        mTop = new Subpanel();
-//        root.setCenter(new Rectangle(100, 100, Color.RED));
+        dataFormat = new DataFormat("JBergerHW3UniqueDataFormat");
 
         //Add the menus
         root.setTop(buildMenuBar());
@@ -52,8 +61,15 @@ public class jbergerHW3 extends Application {
     }
 
     private VBox createDisplay() {
-        mTop = new Subpanel("Edit me!", Color.BEIGE);
-        mBottom = new Subpanel("Me too!", Color.BLANCHEDALMOND);
+        mTop = new Subpanel("Edit me!");
+        mTop.pasteProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observableValue,  Object oldVal, Object newVal) {
+                System.out.println("Changed");
+            }
+        });
+
+        mBottom = new Subpanel("Me too!");
         mMainDisplay = new VBox(mTop, mBottom);
         VBox.setVgrow(mTop, Priority.ALWAYS);
         VBox.setVgrow(mBottom, Priority.ALWAYS);
@@ -85,6 +101,15 @@ public class jbergerHW3 extends Application {
         quitMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.Q, KeyCombination.CONTROL_DOWN));
         quitMenuItem.setOnAction(actionEvent -> Platform.exit());
         fileMenu.getItems().add(quitMenuItem);
+
+        Menu viewMenu = new Menu("_View");
+        MenuItem defaultThemeItem = new MenuItem("_Default");
+        defaultThemeItem.setAccelerator(new KeyCodeCombination(KeyCode.D, KeyCombination.CONTROL_DOWN));
+        defaultThemeItem.setOnAction(actionEvent -> onThemeChange(true));
+        MenuItem styledThemeItem = new MenuItem("_Garbage");
+        styledThemeItem.setAccelerator(new KeyCodeCombination(KeyCode.G, KeyCombination.CONTROL_DOWN));
+        styledThemeItem.setOnAction(actionEvent -> onThemeChange(false));
+        viewMenu.getItems().addAll(defaultThemeItem, styledThemeItem);
         
         //Help menu with just an about item for now
         Menu helpMenu = new Menu("_Help");
@@ -92,11 +117,24 @@ public class jbergerHW3 extends Application {
         aboutMenuItem.setOnAction(actionEvent -> onAbout());
         helpMenu.getItems().add(aboutMenuItem);
         
-        menuBar.getMenus().addAll(fileMenu, helpMenu);
+        menuBar.getMenus().addAll(fileMenu, viewMenu, helpMenu);
         
         return menuBar;
     }
-    
+
+    private void onThemeChange(boolean defaultTheme) {
+        if (!defaultTheme) {
+            if (root.getStylesheets().size() == 0) {
+                root.getStylesheets().add(getClass().getResource("CustomStyle.css").toExternalForm());
+            }
+        } else {
+            if (root.getStylesheets().size() != 0) {
+                root.getStylesheets().remove(0);
+                boolean removed = (root.getStylesheets().size() == 0);
+            }
+        }
+    }
+
     public void setStatus(String status) {
         mStatus.setText(status);
     }

@@ -1,0 +1,17 @@
+.root {
+
+-fx-focus-color: #039ED3;
+-fx-faint-focus-color: #039ED322;
+-fx-background: derive(-fx-focus-color, 50%);
+-fx-control-inner-background: #039ECE;
+-fx-accent: #0096C9;
+
+}
+
+.menu-bar {
+-fx-background-color: #039ED3;
+}
+
+.Subpanel {
+-fx-focus-color: #039ED3;
+}
