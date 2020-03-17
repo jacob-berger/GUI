@@ -3,6 +3,7 @@ package jbergerAshman;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -13,12 +14,15 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Paint;
-import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.Random;
 
 public class jbergerAshman extends Application {
@@ -31,21 +35,19 @@ public class jbergerAshman extends Application {
     double ghostSpeed;
     int[] playerLocation;
     Image player;
-    Paint ash = Color.GREEN;
-    Paint ghost = Color.RED;
     double width = 400;
     double height = 500;
-    boolean run;
     Image ghost1, ghost2, ghost3, ghost4;
     int[] ghost1location, ghost2location, ghost3location, ghost4location;
     long previousPlayerTime = System.currentTimeMillis();
     long previousGhostTime = System.currentTimeMillis();
     GameBoard gameBoard;
     boolean goNorth, goEast, goSouth, goWest;
-    Line line;
+    BorderPane root;
+    MenuBar menuBar;
     private boolean paused;
     private AnimationTimer playerTimer, ghostTimer;
-    BorderPane root;
+    Stage stage;
 
     public static void main(String[] args) {
         launch(args);
@@ -127,8 +129,11 @@ public class jbergerAshman extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        stage = primaryStage;
 
         root = new BorderPane();
+
+        mStatus = new Label("Everything is copacetic");
 
         gameBoard = new GameBoard();
         //224 cakes total including where player starts
@@ -146,8 +151,8 @@ public class jbergerAshman extends Application {
         root.setCenter(gameBoard);
 
         //Add the menus
-        root.setTop(buildMenuBar());
-        mStatus = new Label("Everything is copacetic");
+        menuBar = buildMenuBar();
+        root.setTop(menuBar);
         ToolBar toolBar = new ToolBar(mStatus);
         root.setBottom(toolBar);
         Scene scene = new Scene(root, width, height);
@@ -175,6 +180,12 @@ public class jbergerAshman extends Application {
                     goEast = false;
                     goWest = true;
                     break;
+                case HOME:
+                    onHome();
+                    break;
+                case TAB:
+                    onHome();
+                    break;
             }
         });
 
@@ -186,7 +197,8 @@ public class jbergerAshman extends Application {
             public void handle(long now) {
                 if (!getPaused()) {
                     if (getCakesRemaining() == 0) {
-                        nextLevel();
+                        if (getLevel() != 2) nextLevel();
+                        else win();
                     }
                     onPlayerTimer(now);
                 }
@@ -204,57 +216,79 @@ public class jbergerAshman extends Application {
         };
 
         ghostTimer.start();
+        AudioClip start = new AudioClip(getClass().getResource("Opening.wav").toString());
+        start.play();
 
         primaryStage.setTitle("Jacob Berger Ashman");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
+    private void onHome() {
+        Random random = new Random();
+
+        boolean success = false;
+
+        do {
+            int x = random.nextInt(20);
+            int y = random.nextInt(20);
+            if (gameBoard.board[x][y] != Tile.WALL) {
+                for (int ix = 0; ix < 20; ix++) {
+                    for (int iy = 0; iy < 20; iy++) {
+                        if (gameBoard.board[ix][iy] != Tile.WALL) {
+                            gameBoard.board[ix][iy] = Tile.EMPTY;
+                            setNodeAtLocation(ix, iy, new Image("Images/Empty.png", 20, 20, false, false));
+                        }
+                    }
+                }
+                gameBoard.board[x][y] = Tile.CAKE;
+                setNodeAtLocation(x, y, new Image("Images/Cake.png", 20, 20, false, false));
+                setCakesEaten(223);
+                setCakesRemaining(1);
+
+                success = true;
+            }
+        } while (!success);
+    }
+
+    private void win() {
+        playerTimer.stop();
+        ghostTimer.stop();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText("You've won!");
+        alert.setTitle("You've won!");
+        alert.setContentText("Your total cakes eaten was: " + getCakesEaten());
+    }
+
     private void nextLevel() {
-        setLevel(2);
+        setPaused(true);
         setGhostSpeed(2);
-        setCakesEaten(224);
-        setCakesRemaining(224);
+        setCakesEaten(225);
+        setCakesRemaining(223);
         setNumGhosts(4);
         gameBoard = new GameBoard();
         playerLocation = new int[]{0, 0};
-        player = new Image("Images/Player.png", 20, 20, false, false);
+        setNodeAtPlayer(Tile.EMPTY);
+//        player = new Image("Images/Player.png", 20, 20, false, false);
         createGhosts();
 
         playerTimer.stop();
         ghostTimer.stop();
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Level 1 passed!");
+        alert.setTitle(String.format("Level %d passed!", getLevel()));
+        alert.setHeaderText(String.format("Level %d passed!", getLevel()));
         alert.setContentText("Press OK to continue...");
-//        alert.setOnHidden();
+        alert.setOnHidden(event -> {
+            playerTimer.start();
+            ghostTimer.start();
+            setPaused(false);
+            root.setCenter(gameBoard);
+            AudioClip start = new AudioClip(getClass().getResource("Opening.wav").toString());
+            start.play();
+        });
         alert.show();
-
-        root.setCenter(gameBoard);
-
-        playerTimer = new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                if (!getPaused()) {
-                    if (getCakesRemaining() == 0) {
-                        //gameWon();
-                    }
-                    onPlayerTimer(now);
-                }
-            }
-        };
-        playerTimer.start();
-
-        ghostTimer = new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                if (!getPaused()) {
-                    onGhostTimer(now);
-                }
-            }
-        };
-
-        setPaused(false);
+        setLevel(2);
     }
 
     private void onGhostTimer(long now) {
@@ -482,12 +516,7 @@ public class jbergerAshman extends Application {
         if (elapsed >= 100) {
             previousPlayerTime = now;
             movePlayer();
-            setStatus(getCakesEaten() + "");
-        }
-
-        //Stop at 200 for testing without eating all cakes
-        if (getCakesRemaining() == 200) {
-            nextLevel();
+            setStatus("Cakes eaten: " + getCakesEaten() + "\tCakes remaining: " + getCakesRemaining() + "\tLevel: " + getLevel());
         }
     }
 
@@ -495,8 +524,41 @@ public class jbergerAshman extends Application {
         setPaused(true);
         playerTimer.stop();
         ghostTimer.stop();
-        System.out.println("You hit a ghost!");
+        AudioClip death = new AudioClip(getClass().getResource("Death.mp3").toString());
+        death.play();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("You hit a ghost. Game over.");
+        alert.setHeaderText("Game over");
+        alert.setTitle("Game over");
+        alert.setOnHidden(event -> newGame());
+        alert.show();
+    }
 
+    private void newGame() {
+        setPaused(false);
+        setGhostSpeed(1);
+        setCakesEaten(1);
+        setCakesRemaining(223);
+        setNumGhosts(2);
+        gameBoard = new GameBoard();
+        playerLocation = new int[]{0, 0};
+        setNodeAtPlayer(Tile.EMPTY);
+        createGhosts();
+        root.setCenter(gameBoard);
+
+        playerTimer.start();
+        ghostTimer.start();
+        AudioClip start = new AudioClip(getClass().getResource("Opening.wav").toString());
+        start.play();
+
+        setLevel(1);
+
+        ObservableList<MenuItem> list = menuBar.getMenus().get(1).getItems();
+        list.get(2).setDisable(true);
+        list.get(3).setDisable(false);
+        list = menuBar.getMenus().get(0).getItems();
+        list.get(1).setDisable(true);
+        list.get(2).setDisable(true);
     }
 
     private void createGhosts() {
@@ -587,7 +649,32 @@ public class jbergerAshman extends Application {
         MenuItem quitMenuItem = new MenuItem("_Quit");
         quitMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.Q, KeyCombination.CONTROL_DOWN));
         quitMenuItem.setOnAction(actionEvent -> Platform.exit());
-        fileMenu.getItems().add(quitMenuItem);
+        MenuItem saveMenuItem = new MenuItem("S_ave");
+        saveMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.A, KeyCombination.CONTROL_DOWN));
+        saveMenuItem.setOnAction(actionEvent -> onSave());
+        saveMenuItem.setDisable(true);
+        MenuItem loadMenuItem = new MenuItem("_Load");
+        loadMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.L, KeyCombination.CONTROL_DOWN));
+        loadMenuItem.setOnAction(actionEvent -> onLoad());
+        loadMenuItem.setDisable(true);
+        fileMenu.getItems().addAll(quitMenuItem, saveMenuItem, loadMenuItem);
+
+        //Game menu
+        Menu gameMenu = new Menu("_Game");
+        MenuItem newMenuItem = new MenuItem("_New Game");
+        newMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.N, KeyCombination.CONTROL_DOWN));
+        newMenuItem.setOnAction(actionEvent -> newGame());
+        MenuItem goMenuItem = new MenuItem("G_o");
+        goMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.G, KeyCombination.CONTROL_DOWN));
+        goMenuItem.setOnAction(actionEvent -> resume());
+        goMenuItem.setDisable(true);
+        MenuItem pauseMenuItem = new MenuItem("_Pause");
+        pauseMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.P, KeyCombination.CONTROL_DOWN));
+        pauseMenuItem.setOnAction(actionEvent -> pause());
+        MenuItem settingsMenuItem = new MenuItem("S_ettings");
+        settingsMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN));
+        settingsMenuItem.setOnAction(actionEvent -> onSettings());
+        gameMenu.getItems().addAll(newMenuItem, new SeparatorMenuItem(), goMenuItem, pauseMenuItem, settingsMenuItem);
 
         //Help menu with just an about item for now
         Menu helpMenu = new Menu("_Help");
@@ -595,9 +682,70 @@ public class jbergerAshman extends Application {
         aboutMenuItem.setOnAction(actionEvent -> onAbout());
         helpMenu.getItems().add(aboutMenuItem);
 
-        menuBar.getMenus().addAll(fileMenu, helpMenu);
+        menuBar.getMenus().addAll(fileMenu, gameMenu, helpMenu);
 
         return menuBar;
+    }
+
+    private void onLoad() {
+        System.out.println("Loading not implemented.");
+    }
+
+    private void onSave() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Game");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Ashman Files", "*.ash"));
+        File file = fileChooser.showSaveDialog(stage);
+
+        try {
+            FileOutputStream fout = new FileOutputStream(file);
+            ObjectOutputStream objectOut = new ObjectOutputStream(fout);
+            objectOut.writeObject(gameBoard);
+            objectOut.write(getCakesEaten());
+            objectOut.write(getCakesRemaining());
+            objectOut.write(getLevel());
+            objectOut.writeObject(playerLocation);
+            objectOut.write(getNumGhosts());
+            objectOut.writeObject(ghost1location);
+            objectOut.writeObject(ghost2location);
+            if (getNumGhosts() > 2) {
+                objectOut.writeObject(ghost3location);
+                objectOut.writeObject(ghost4location);
+            }
+            objectOut.close();
+            fout.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+    }
+
+    private void onSettings() {
+
+    }
+
+    private void resume() {
+        setPaused(false);
+        ghostTimer.start();
+        playerTimer.start();
+        ObservableList<MenuItem> list = menuBar.getMenus().get(1).getItems();
+        list.get(2).setDisable(true);
+        list.get(3).setDisable(false);
+        list = menuBar.getMenus().get(0).getItems();
+        list.get(1).setDisable(true);
+        list.get(2).setDisable(true);
+    }
+
+    private void pause() {
+        setPaused(true);
+        ghostTimer.stop();
+        playerTimer.stop();
+        ObservableList<MenuItem> list = menuBar.getMenus().get(1).getItems();
+        list.get(2).setDisable(false);
+        list.get(3).setDisable(true);
+        list = menuBar.getMenus().get(0).getItems();
+        list.get(1).setDisable(false);
+        list.get(2).setDisable(false);
     }
 
     private ImageView getNodeAtPlayer() {

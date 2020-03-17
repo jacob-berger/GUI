@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="jbergerLab9" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="2eff15be-3687-43d2-af0d-52529109cbcb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../jbergerHW3/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jbergerHW3/.idea/dictionaries/jberger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jbergerHW3/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jbergerHW3/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jbergerHW3/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jbergerHW3/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jbergerHW3/jbergerLab0.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jbergerHW3/src/jbergerHW3/Subpanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jbergerLab7/.idea/artifacts/jbergerLab7_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jbergerLab4.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Print.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jbergerLab7/build/classes/jbergerlab7/jbergerLab7.class" beforeDir="false" afterPath="$PROJECT_DIR$/../jbergerLab7/build/classes/jbergerlab7/jbergerLab7.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/jbergerLab9.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/jbergerLab9/Line.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/jbergerLab9/Line.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/jbergerLab9/jbergerLab9$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/jbergerLab9/jbergerLab9$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/jbergerLab9/jbergerLab9.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/jbergerLab9/jbergerLab9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jbergerLab9/jbergerLab9.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jbergerLab9/jbergerLab9.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +39,9 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="inlay.hints.JAVA" />
   </component>
   <component name="RunManager">
@@ -84,22 +83,22 @@
       <screen x="0" y="23" width="1440" height="834" />
     </state>
     <state x="789" y="332" width="467" height="225" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.23.1440.834@0.23.1440.834" timestamp="1582834341105" />
-    <state width="793" height="268" key="GridCell.Tab.0.bottom" timestamp="1582837327015">
+    <state width="1398" height="216" key="GridCell.Tab.0.bottom" timestamp="1583965044067">
       <screen x="0" y="23" width="1440" height="834" />
     </state>
-    <state width="793" height="268" key="GridCell.Tab.0.bottom/0.23.1440.834@0.23.1440.834" timestamp="1582837327015" />
-    <state width="793" height="268" key="GridCell.Tab.0.center" timestamp="1582837327014">
+    <state width="1398" height="216" key="GridCell.Tab.0.bottom/0.23.1440.834@0.23.1440.834" timestamp="1583965044067" />
+    <state width="1398" height="216" key="GridCell.Tab.0.center" timestamp="1583965044066">
       <screen x="0" y="23" width="1440" height="834" />
     </state>
-    <state width="793" height="268" key="GridCell.Tab.0.center/0.23.1440.834@0.23.1440.834" timestamp="1582837327014" />
-    <state width="793" height="268" key="GridCell.Tab.0.left" timestamp="1582837327014">
+    <state width="1398" height="216" key="GridCell.Tab.0.center/0.23.1440.834@0.23.1440.834" timestamp="1583965044066" />
+    <state width="1398" height="216" key="GridCell.Tab.0.left" timestamp="1583965044065">
       <screen x="0" y="23" width="1440" height="834" />
     </state>
-    <state width="793" height="268" key="GridCell.Tab.0.left/0.23.1440.834@0.23.1440.834" timestamp="1582837327014" />
-    <state width="793" height="268" key="GridCell.Tab.0.right" timestamp="1582837327015">
+    <state width="1398" height="216" key="GridCell.Tab.0.left/0.23.1440.834@0.23.1440.834" timestamp="1583965044065" />
+    <state width="1398" height="216" key="GridCell.Tab.0.right" timestamp="1583965044067">
       <screen x="0" y="23" width="1440" height="834" />
     </state>
-    <state width="793" height="268" key="GridCell.Tab.0.right/0.23.1440.834@0.23.1440.834" timestamp="1582837327015" />
+    <state width="1398" height="216" key="GridCell.Tab.0.right/0.23.1440.834@0.23.1440.834" timestamp="1583965044067" />
     <state width="793" height="268" key="GridCell.Tab.1.bottom" timestamp="1582837327017">
       <screen x="0" y="23" width="1440" height="834" />
     </state>
@@ -116,10 +115,10 @@
       <screen x="0" y="23" width="1440" height="834" />
     </state>
     <state width="793" height="268" key="GridCell.Tab.1.right/0.23.1440.834@0.23.1440.834" timestamp="1582837327016" />
-    <state x="443" y="79" key="SettingsEditor" timestamp="1582836726386">
+    <state x="416" y="23" width="1024" height="834" key="SettingsEditor" timestamp="1583964970266">
       <screen x="0" y="23" width="1440" height="834" />
     </state>
-    <state x="443" y="79" key="SettingsEditor/0.23.1440.834@0.23.1440.834" timestamp="1582836726386" />
+    <state x="416" y="23" width="1024" height="834" key="SettingsEditor/0.23.1440.834@0.23.1440.834" timestamp="1583964970266" />
     <state x="687" y="181" width="670" height="676" key="search.everywhere.popup" timestamp="1582835877129">
       <screen x="0" y="23" width="1440" height="834" />
     </state>

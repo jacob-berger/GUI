@@ -312,8 +312,6 @@ public class jbergerLab9 extends Application {
                 double x = Math.pow(e.getX() - line.getStart().getX(), 2);
                 double y = Math.pow(e.getY() - line.getStart().getY(), 2);
                 double distance = Math.sqrt(x + y);
-
-                if (distance < )
             }
         }
     }
